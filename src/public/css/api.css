@@ -1,0 +1,258 @@
+body {
+  font-family: Inter var, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  margin: 0;
+  color: #161e2e;
+}
+
+
+.main {
+  background-color: #f1f2f5;
+  width: 100%;
+  height: 100vh;
+  padding: 20px 0px;
+}
+
+.header {
+  padding: 10px;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  font-weight: 600;
+  padding-left: 2rem;
+  color: #161e2e;
+}
+.content {
+  width: 91.666667%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding-left: 10px;
+}
+
+.accordian {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.accordian:hover {
+  opacity: 75%;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.pill {
+  margin-bottom: 0.25rem;
+  margin-top: 0.25rem;
+  width: 100px;
+  padding: 6px 15px;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 0.25rem;
+  color: white;
+}
+ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin-top: 0.25rem;
+}
+
+li {
+  flex-direction: column;
+  display: flex;
+}
+
+label {
+  padding-right: 2px;
+  font-weight: 400;
+}
+input, textarea {
+  height: 30px;
+  font-size: 14px;
+  width: 70%;
+  padding: 5px;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d2d6dc;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: #161e2e;
+  border-image-outset: 0;
+}
+textarea{
+  height: 5rem;
+}
+
+form {
+  margin-bottom: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding-left: 5px;
+}
+.field-name {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.field-description {
+  font-family: monospace;
+}
+.required-field {
+  font-size: 10px;
+  color: red;
+  font-weight: 700;
+}
+form {
+  margin-bottom: 0;
+}
+.btn-primary {
+  width: 100%;
+  height: 35px;
+  margin-top: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #3a7adb;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: auto;
+  
+}
+
+.api-form {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+}
+.api-results {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.url {
+  font-family: monospace;
+  font-weight: 600;
+  color: #161e2e;
+  font-size: 16px;
+  margin-right: 0.5rem;
+  margin-left: 1rem;
+}
+.hint {
+  color: #161e2e;
+  font-size: 14px;
+}
+
+.response-block {
+  border-radius: 0.25rem;
+  background-color: #32343d;
+  color: white;
+  font-family: monospace;
+  height: 100%;
+  
+  padding: 0.5rem 1rem;
+}
+
+.panel {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-width: 1px;
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  margin-top: -1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.panel-heading {
+  text-align: center;
+  padding-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.bg-light-green {
+  background-color: #e3f4ec;
+}
+
+.bg-light-blue {
+  background-color: #e7f0fa;
+}
+
+.bg-light-orange {
+  background-color: #f9eee1;
+}
+.bg-light-red {
+  background-color: #f9e1e1;
+}
+
+.bg-green {
+  background-color: #3fc57d;
+}
+
+.bg-blue {
+  background-color: #519cfe;
+}
+
+.bg-orange {
+  background-color: #f99025;
+}
+.bg-red {
+  background-color: #f42530;
+}
+
+.text-gray {
+  color: #161e2e;
+  margin: 0;
+}
+.text-size-med {
+  font-size: 24px;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.text-size-normal {
+  font-weight: 500;
+}
+
+.text-size-small {
+  font-size: 14px;
+}
