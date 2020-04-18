@@ -16,6 +16,20 @@ module.exports = {
       directory: __dirname + "/src/config/db/seeds/development",
     },
   },
+  test: {
+    client: "pg",
+    connection: process.env.DATABASE_URL,
+    pool: {
+      min: 2,
+      max: 10,
+    },
+    migrations: {
+      directory: __dirname + "srx/config/db/migrations",
+    },
+    seeds: {
+      directory: __dirname + "/src/config/db/seeds/production",
+    },
+  },
 
   production: {
     client: "pg",

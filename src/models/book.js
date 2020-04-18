@@ -43,7 +43,7 @@ exports.findAll = async (query) => {
   try {
     const result = await knex
       .select("book.id", "book.title", "book.author")
-      .count("comment.message", { as: "comment_count" })
+      .count("comment.message", { as: "commentcount" })
       .from("book")
       .leftJoin("comment", "comment.book_id", "book.id")
       .groupBy("book.id", "book.title", "book.author");
