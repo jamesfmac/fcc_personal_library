@@ -6,7 +6,7 @@ module.exports = () => {
   let api = Router();
 
   api.route("/").get(function (req, res) {
-    res.sendFile(process.cwd() + "/src/views/index.html");
+    res.sendFile(process.cwd() + "/src/views/api.html");
   });
 
   api

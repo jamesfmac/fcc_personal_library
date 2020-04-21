@@ -1,0 +1,438 @@
+<html>
+  <head>
+    <title>API Explorer</title>
+    <link rel="stylesheet" type="text/css" href="/css/api.css" />
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.8.0/dist/alpine.js"
+      defer
+    ></script>
+  </head>
+
+  <header class="shadow header">
+    <h1 class="flex text-gray">API Explorer</h1>
+  </header>
+
+  <div class="main">
+    <div class="content">
+      <div class="section-heading">
+        <span class="text-size-med text-gray">books</span>
+        <span class="text-size-small">Create and manage books</span>
+      </div>
+      <ul class="" x-data="{selected:null}">
+        <li class="">
+          <h4
+            @click="selected !== 0 ? selected = 0 : selected = null"
+            class="accordian bg-light-green shadow"
+          >
+            <div class="pill bg-green text-size-normal">
+              Post
+            </div>
+            <div class="url">
+              /api/books
+            </div>
+            <div class="hint text-size-normal">
+              Create a new book
+            </div>
+          </h4>
+          <div class="panel shadow" x-show="selected == 0">
+            <div class="api-form">
+              <div class="panel-heading">Request</div>
+              <form id="issuePostForm" action="api/books" data-method="POST">
+                <div class="form-group">
+                  <div class="field-group">
+                    <div class="field-name">
+                      <label class="text-size-normal text-gray" for="title"
+                        >title
+                      </label>
+                      <div class="required-field">* required</div>
+                    </div>
+
+                    <div class="field-description">string</div>
+                  </div>
+                  <input
+                    type="text"
+                    name="title"
+                    placeholder="Book title"
+                    required="true"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <div class="field-group">
+                    <div class="field-name">
+                      <label class="text-size-normal text-gray" for="authro"
+                        >title
+                      </label>
+                      <div class="required-field">* required</div>
+                    </div>
+
+                    <div class="field-description">string</div>
+                  </div>
+                  <input
+                    type="text"
+                    name="author"
+                    placeholder="Author"
+                    required="true"
+                  />
+                </div>
+                <br />
+
+                <button
+                  class="btn-primary text-size-normal"
+                  type="submit"
+                  class="btn-primary text-size-normal"
+                  type="submit"
+                  @click="
+                $event.preventDefault()
+                callAPI($event,'jsonResultPost',true )"
+                >
+                  Execute
+                </button>
+              </form>
+            </div>
+            <div class="api-results">
+              <div class="panel-heading">Response</div>
+              <div id="jsonResultPost" class="response-block">Ready...</div>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <h4
+            @click="selected !== 2 ? selected = 2 : selected = null"
+            class="accordian bg-light-blue shadow"
+          >
+            <div class="pill bg-blue text-size-normal">
+              Get
+            </div>
+            <div class="url">
+              /api/books/{bookid}
+            </div>
+            <div class="hint text-size-normal">
+              List all books
+            </div>
+          </h4>
+          <div class="panel shadow" x-show="selected == 2">
+            <div class="api-form">
+              <div class="panel-heading">Request</div>
+              <form data-method="GET" action="api/books/">
+                <br />
+
+                <button
+                  class="btn-primary text-size-normal"
+                  type="submit"
+                  @click="
+                $event.preventDefault()
+                console.log('blah')
+                callAPI($event,'jsonResultGet' )"
+                >
+                  Execute
+                </button>
+              </form>
+            </div>
+            <div class="api-results">
+              <div class="panel-heading">Response</div>
+              <div id="jsonResultGet" class="response-block">Ready...</div>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <h4
+            @click="selected !== 3 ? selected = 3 : selected = null"
+            class="accordian bg-light-red shadow"
+          >
+            <div class="pill bg-red text-size-normal">
+              Delete
+            </div>
+            <div class="url">
+              /api/books/{bookid}
+            </div>
+            <div class="hint text-size-normal">
+              Deletes a book
+            </div>
+          </h4>
+          <div class="panel shadow" x-show="selected == 3">
+            <div class="api-form">
+              <div class="panel-heading">Request</div>
+              <form
+                id="deleteForm"
+                class="border"
+                data-method="DELETE"
+                action="api/books/"
+              >
+                <div class="form-group">
+                  <div class="field-group">
+                    <div class="field-name">
+                      <label class="text-size-normal text-gray" for="id"
+                        >id
+                      </label>
+                      <div class="required-field">* required</div>
+                    </div>
+
+                    <div class="field-description">integer</div>
+                  </div>
+                  <input
+                    type="text"
+                    name="id"
+                    placeholder="id"
+                    required="true"
+                    data-ispath="true"
+                  />
+                </div>
+                <br />
+
+                <button
+                  class="btn-primary text-size-normal"
+                  type="submit"
+                  @click="
+                  $event.preventDefault()
+                  console.log('blah')
+                  callAPI($event,'jsonResultDelete' )"
+                >
+                  Execute
+                </button>
+              </form>
+            </div>
+            <div class="api-results">
+              <div class="panel-heading">Response</div>
+              <div
+                id="jsonResultDelete"
+                class="response-block"
+                x-ref="delete-response"
+              >
+                Ready...
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <div class="section-heading">
+          <span class="text-size-med text-gray">comments</span>
+          <span class="text-size-small">Create and view book comments</span>
+        </div>
+
+        <li class="">
+          <h4
+            @click="selected !== 4 ? selected = 4 : selected = null"
+            class="accordian bg-light-green shadow"
+          >
+            <div class="pill bg-green text-size-normal">
+              Post
+            </div>
+            <div class="url">
+              /api/books/{bookid}/comments
+            </div>
+            <div class="hint text-size-normal">
+              Add a new comment
+            </div>
+          </h4>
+          <div class="panel shadow" x-show="selected == 4">
+            <div class="api-form">
+              <div class="panel-heading">Request</div>
+              <form
+                id="issuePostForm"
+                action="api/books/"
+                data-method="POST"
+                data-isComment="true"
+              >
+                <div class="form-group">
+                  <div class="field-group">
+                    <div class="field-name">
+                      <label class="text-size-normal text-gray" for="id"
+                        >Book ID
+                      </label>
+                      <div class="required-field">* required</div>
+                    </div>
+
+                    <div class="field-description">string</div>
+                  </div>
+                  <input
+                    type="text"
+                    name="id"
+                    placeholder="Book id"
+                    required="true"
+                    data-ispath="true"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <div class="field-group">
+                    <div class="field-name">
+                      <label class="text-size-normal text-gray" for="message"
+                        >Comment
+                      </label>
+                      <div class="required-field">* required</div>
+                    </div>
+
+                    <div class="field-description">string</div>
+                  </div>
+                  <input
+                    type="text"
+                    name="message"
+                    placeholder="Comment"
+                    required="true"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <div class="field-group">
+                    <div class="field-name">
+                      <label class="text-size-normal text-gray" for="name"
+                        >title
+                      </label>
+                      <div class="required-field">* required</div>
+                    </div>
+
+                    <div class="field-description">string</div>
+                  </div>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    required="true"
+                  />
+                </div>
+
+                <br />
+
+                <button
+                  class="btn-primary text-size-normal"
+                  type="submit"
+                  class="btn-primary text-size-normal"
+                  type="submit"
+                  @click="
+                $event.preventDefault()
+                callAPI($event,'jsonResultCommentPost',true )"
+                >
+                  Execute
+                </button>
+              </form>
+            </div>
+            <div class="api-results">
+              <div class="panel-heading">Response</div>
+              <div id="jsonResultCommentPost" class="response-block">
+                Ready...
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+        <li>
+          <h4
+            @click="selected !== 5 ? selected = 5 : selected = null"
+            class="accordian bg-light-blue shadow"
+          >
+            <div class="pill bg-blue text-size-normal">
+              Get
+            </div>
+            <div class="url">
+              /api/books/{bookid}
+            </div>
+            <div class="hint text-size-normal">
+              Get book and comments
+            </div>
+          </h4>
+          <div class="panel shadow" x-show="selected == 5">
+            <div class="api-form">
+              <div class="panel-heading">Request</div>
+              <form data-method="GET" action="api/books/">
+                <div class="form-group">
+                  <div class="field-group">
+                    <div class="field-name">
+                      <label class="text-size-normal text-gray" for="book_id"
+                        >project
+                      </label>
+                      <div class="required-field">* required</div>
+                    </div>
+                    <div class="field-description">string</div>
+                  </div>
+                  <input
+                    type="text"
+                    name="book_id"
+                    placeholder="Book ID"
+                    required="true"
+                    data-ispath="true"
+                  />
+                </div>
+                <br />
+
+                <button
+                  class="btn-primary text-size-normal"
+                  type="submit"
+                  @click="
+                $event.preventDefault()
+                console.log('blah')
+                callAPI($event,'jsonResultGetSingleBook' )"
+                >
+                  Execute
+                </button>
+              </form>
+            </div>
+            <div class="api-results">
+              <div class="panel-heading">Response</div>
+              <div id="jsonResultGetSingleBook" class="response-block">Ready...</div>
+            </div>
+          </div>
+        </li>
+
+       
+
+
+      </ul>
+    </div>
+  </div>
+  <script>
+    const callAPI = async (event, display, hasBody) => {
+      const form = event.target.form;
+      const action = form.action;
+      const method = form.dataset.method;
+      const book_id = form.elements[0].getAttribute("data-ispath")
+        ? form.elements[0].value
+        : "";
+      const isComment = form.getAttribute("data-isComment") ? "/comments" : "";
+
+  
+
+      const body = hasBody
+        ? new URLSearchParams([...new FormData(form)])
+        : null;
+
+      try {
+        const response = await fetch(`${action}${book_id}${isComment}`, {
+          method: method,
+          body: body,
+        });
+
+        if (response.status !== 200) {
+          let errorText = "";
+
+      
+          switch (response.status) {
+            case 404:
+              errorText = "Resource not found. [404]";
+              break;
+            case 422:
+              errorText = JSON.stringify(await response.json(),"",3);
+              break;
+            default:
+              errorText = "Sorry unknown server error. [500]";
+          }
+
+          document.getElementById(display).innerText = errorText;
+          return;
+        }
+        const data = await response.json();
+        document.getElementById(display).innerText = JSON.stringify(
+          data,
+          "",
+          2
+        );
+        console.log(data);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+  </script>
+</html>

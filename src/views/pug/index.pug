@@ -1,0 +1,40 @@
+html
+    head
+        link(rel="stylesheet", href="/css/index.css")
+    body
+        header.shadow
+            h1 Personal Library 
+        main
+            div.shadow.container
+                table
+                    thead
+                        tr
+                            th Title
+                            th Author
+                            th Comments
+                            th 
+                    if books.length > 1
+                    for book in books
+                        tr
+                            td #{book.title}
+                            td #{book.author}
+                            td 
+                                span.commentcount #{book.commentcount}
+                            td.controls
+                                a(class='delete' onClick=`deleteBook(${book.id})`) Delete
+                    else
+                        tr  
+                            td(colspan="4" style="width:100%") No books found
+    script. 
+        var deleteBook = async (book)=>{
+               try {
+        const response = await fetch(`/api/books/${book}`, {
+          method: 'delete',
+        });
+        location.reload()
+               }
+        catch(error){
+
+            console.log(error)
+        }
+        }

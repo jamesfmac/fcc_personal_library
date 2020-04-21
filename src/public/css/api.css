@@ -10,8 +10,7 @@ body {
 .main {
   background-color: #f1f2f5;
   width: 100%;
-  height: 100vh;
-  padding: 20px 0px;
+  height: 100%;
 }
 
 .header {
@@ -34,6 +33,7 @@ body {
   align-items: center;
   flex-direction: row;
   padding-left: 10px;
+  padding-top: 30px
 }
 
 .accordian {

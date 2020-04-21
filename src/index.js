@@ -6,6 +6,7 @@ const helmet = require("helmet");
 
 const { PORT } = require("./config");
 const api = require("./routes/api");
+const ui = require("./routes/ui")
 
 const app = express();
 
@@ -23,6 +24,14 @@ app.use(helmet());
 //Routes
 
 app.use(express.static(__dirname + "/public"));
+
+app.set("view engine", "pug");
+
+app.set("views", process.cwd() + "/src/views/pug");
+
+
+
+app.use("/", ui());
 
 app.use("/api", api());
 

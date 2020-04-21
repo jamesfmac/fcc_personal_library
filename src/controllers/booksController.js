@@ -47,7 +47,7 @@ exports.validationRules = (method) => {
           param("id").custom(async (value) => {
             const bookCheck = await book.findOne(value);
             if (!bookCheck) {
-              return Promise.reject(`Book does not exist with id ${value}`);
+              return Promise.reject(`Book ID must exist`);
             }
             return Promise.resolve();
           }),
@@ -94,7 +94,13 @@ exports.createBook = async (req, res, next) => {
   try {
     const { title, author } = req.body;
     const result = await book.create({ title: title, author: author });
-    res.json(result);
+
+    if(result.length ==1){
+     return res.json(result[0]);
+    }
+    res.json("Failed to add book")
+
+    
   } catch (error) {
     return next(error);
   }
