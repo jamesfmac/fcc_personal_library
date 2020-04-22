@@ -6,13 +6,13 @@ body {
   color: #161e2e;
   border: 0 solid #d2d6dc;
 }
-header {
+.header {
   padding: 10px;
   font-size: 1.25rem;
   line-height: 1.25;
   font-weight: 600;
   padding-left: 2rem;
-  color: #161e2e;
+  color: #6b7280;
 }
 h1 {
   padding: 0;
@@ -24,9 +24,110 @@ main {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
+.form_container {
+  margin-top: 30px;
+  margin-left: 2rem;
+  padding: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  vertical-align: middle;
+  display: inline-block;
+  border-color: #e5e7eb;
+  border-bottom-width: 1px;
+  width: 400px;
+  margin-right: 2rem;
+  height: fit-content;
+
+}
+
+.form_header {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-weight: 500;
+  line-height: 1rem;
+  border-color: #e5e7eb;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  padding-top: 0;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  text-align: center;
+  cursor: default;
+}
+
+input {
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  text-align: left;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d2d6dc;
+  font-size: 14px;
+}
+
+.hint{
+  color: #6b7280;
+  line-height: 1.25rem;
+  text-align: justify;
+  font-size: .85rem;
+}
+.api_link{
+  text-decoration: none;
+}
+
+.input_title{
+  border-top-left-radius: .375rem;
+  border-top-right-radius: .375rem;
+  margin-bottom: -1px;
+}
+
+input:focus {
+  outline: none;
+}
+.input_author{
+  border-bottom-left-radius: .375rem;
+  border-bottom-right-radius: .375rem;
+
+}
+
+.add {
+  margin-top: 1.5rem;
+
+}
+.btn-add {
+  margin-top: 1rem;
+  width: 100%;
+  height: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: .375rem;
+  background-color: #5850ec;
+  color:white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+
+}
+
+.btn-add:hover {
+  background-color: #6875f5;
+  cursor: pointer;
+}
+
 table {
   margin-top: 0;
   width: 100%;
@@ -71,7 +172,15 @@ td {
   text-align: left;
 }
 
+td a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 .container {
+  margin-right: 2rem;
+  margin-left: .5rem;
   margin-top: 30px;
   padding: 0;
   border-radius: 0.5rem;
@@ -80,7 +189,8 @@ td {
   display: inline-block;
   border-color: #e5e7eb;
   border-bottom-width: 1px;
-  width: 700px;
+  width: 100%;
+  height: fit-content;
 }
 
 .commentcount {

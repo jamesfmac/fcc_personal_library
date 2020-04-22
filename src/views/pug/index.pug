@@ -2,9 +2,23 @@ html
     head
         link(rel="stylesheet", href="/css/index.css")
     body
-        header.shadow
-            h1 Personal Library 
+        div.header.shadow
+            h1 Demo Library 
         main
+            div.form_container
+                div.form_header Add Book
+                form(action="/api/books" method="post")
+                    div.form_group
+                        input(type="text" placeholder="Book Title" name="title" class="input_title")
+                    div.form_group
+                        input(type="text" placeholder="Author" name="author" class="input_author")
+                    div.form_group
+                        button( type="button" class='btn-add' onClick=`addBook(event)`) Add
+                div.hint Want to build your own library? Check out the 
+                    a(href="/api" class="api_link" target="_blank") API Explorer →
+                    span  to see how it works. 
+
+
             div.shadow.container
                 table
                     thead
@@ -16,10 +30,13 @@ html
                     if books.length > 1
                     for book in books
                         tr
-                            td #{book.title}
-                            td #{book.author}
                             td 
-                                span.commentcount #{book.commentcount}
+                                a(href=`/book/${book.id}`) #{book.title}
+                            td 
+                                a(href=`/book/${book.id}`) #{book.author}
+                            td 
+                                a(href=`/book/${book.id}`)
+                                    span.commentcount #{book.commentcount}
                             td.controls
                                 a(class='delete' onClick=`deleteBook(${book.id})`) Delete
                     else
@@ -33,6 +50,33 @@ html
         });
         location.reload()
                }
+        catch(error){
+
+            console.log(error)
+        }
+        }
+
+         var addBook = async (e)=>{
+             e.preventDefault()
+               try {
+        const form = event.target.form;
+        console.log(form)
+      
+        const body = new URLSearchParams([...new FormData(form)])
+
+
+        console.log(body)
+
+         const response = await fetch(`/api/books`, {
+          method: 'post',
+          body: body,
+        });
+
+        if(response.status ==200){
+            location.reload()
+        }
+               }
+       
         catch(error){
 
             console.log(error)

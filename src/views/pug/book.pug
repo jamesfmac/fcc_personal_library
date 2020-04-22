@@ -1,0 +1,58 @@
+html
+    head
+        link(rel="stylesheet", href="/css/book.css")
+    body
+        main
+            div.nav
+                div
+                    a(href="/" class="back_link" ) ← Back 
+            div.container.shadow
+                div.details_section
+                    div.details_content
+                        div.title #{details.title}
+                        div.author #{details.author}
+                div.comment_section
+                    div.comment_header Comments
+                    if details.comments[0] != null
+                            for comment in details.comments 
+                                div.comment
+                                    div.message #{comment.message} 
+                                    div.user #{comment.author}
+                                    
+                    else
+                        div.empty_comments No comments yet..
+                
+                    form(action="/api/books" method="post")
+                        div.form_group
+                            input(type="text" placeholder="Your comment" name="message" class="input_message")
+                        div.form_group
+                            input(type="text" placeholder="Name (optional)" name="name" class="input_user")
+                        div.form_group
+                            button( type="button" class='btn-add' onClick=`addComment(event,${details.id})`) Post
+    script. 
+      var addComment = async (event, id)=>{
+             event.preventDefault()
+               try {
+        const form = event.target.form;
+        console.log(form)
+      
+        const body = new URLSearchParams([...new FormData(form)])
+
+
+        console.log(body)
+
+         const response = await fetch(`/api/books/${id}/comments`, {
+          method: 'post',
+          body: body,
+        });
+
+        if(response.status ==200){
+            location.reload()
+        }
+               }
+       
+        catch(error){
+
+            console.log(error)
+        }
+        }

@@ -12,5 +12,11 @@ module.exports = () => {
     const books = await book.findAll();
     res.render("index", { books: books });
   });
+  api.route("/book/:id").get(async (req, res) => {
+    const id = req.params.id;
+    const details = await book.findOne(id);
+    res.render("book", { details });
+  });
+
   return api;
 };
