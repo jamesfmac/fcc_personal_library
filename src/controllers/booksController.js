@@ -8,8 +8,8 @@ exports.validationRules = (method) => {
     case "createBook":
       {
         return [
-          body("title").isString().escape().withMessage("Title is required "),
-          body("author").isString().escape().withMessage("Author is required "),
+          body("title").isString().isLength({min:3}).escape().withMessage("Title is required.min length 3"),
+          body("author").isString().isLength({min:3}).escape().withMessage("Author is required. Min length 3"),
         ];
       }
       break;
