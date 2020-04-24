@@ -17,7 +17,6 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "browser-sync": "^2.26.7",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
     "express-validator": "^6.4.0",
